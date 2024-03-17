@@ -7,18 +7,25 @@ PUT - update
 DELETE - delete something
 
 
-'''
-The basic command to run the FastAPI project for our server is (write at the terminal):
-        uvicorn myapi:app --reload
-'''
 
-'''
-Please copy the URL wrote after ----> Uvicorn running on:
+1. The basic command to run the FastAPI project for our server is (write at the terminal):
+        uvicorn myapi:app --reload
+
+
+2. Please copy the URL wrote after ----> Uvicorn running on:
     http://127.0.0.1:8000
 and paste it to be opened.
-'''
 
-'''
-To see the documentation of our API write:
+
+3. To see the documentation of our API write:
     http://127.0.0.1:8000/docs
-'''
+
+
+4. To see the value saved in the dictionary students, we need to consider our key(in this case student_id) in the following URL:
+    http://127.0.0.1:8000/get-student/student_id
+
+5. Using of Path, allows us to make the description to obtain the information that we want.
+
+6. We can add the parameter
+gt, ge, lt, le which mean greater than, greater or equal than, less than or less or equal than. This parameter is written in Path(--).
+   
