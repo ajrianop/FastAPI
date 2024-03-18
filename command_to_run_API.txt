@@ -25,7 +25,11 @@ and paste it to be opened.
     http://127.0.0.1:8000/get-student/student_id
 
 5. Using of Path, allows us to make the description to obtain the information that we want.
+    Path(description="input the Id of the student"  )
 
 6. We can add the parameter
-gt, ge, lt, le which mean greater than, greater or equal than, less than or less or equal than. This parameter is written in Path(--).
+gt, ge, lt, le which mean greater than, greater or equal than, less than or less or equal than. This parameter is written in Path(--):
+    Path(description="input the Id of the student", gt=0)
+
+7. 
    

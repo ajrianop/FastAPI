@@ -11,7 +11,12 @@ students = {
         "class" : "year 6"
     },
     2 : {
-        "name" : "karl",
+        "name" : "paul",
+        "age" : "12",
+        "class" : "year 7"
+    },
+    3 : {
+        "name" : "brick",
         "age" : "11",
         "class" : "year 6"
     }
@@ -26,5 +31,6 @@ def index():
     return {"name": "First Data"}
 
 @app.get("/get-student/{student_id}")
-def get_student(student_id : int = Path(None, description="The ID of the student you want to view" , gt=0 )):
+def get_student(student_id : int = Path(description="input the Id of the student", gt=0, lt=3 )):
+
     return students[student_id]
