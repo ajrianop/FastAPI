@@ -1,5 +1,6 @@
 # Builnding our first API
 from fastapi import FastAPI, Path
+from typing import Optional
 
 # We create an instance of the API object
 app = FastAPI()
@@ -41,6 +42,17 @@ def index():
     return {"name": "First Data"}
 
 @app.get("/get-student/{student_id}")
-def get_student(student_id : int = Path(description="input the Id of the student", gt=0, lt=3 )):
+def get_student(student_id : int = Path(description="The Id of the student", gt=0, lt=7 )):
 
     return students[student_id]
+
+# Query parameters
+
+@app.get("/get-by-name")
+
+def get_student(name : Optional[str] = None , test = int):
+    
+    for student_id in students:
+        if students[student_id]['name'] == name:
+            return students[student_id]
+    return {'Data' : 'Not found'}
