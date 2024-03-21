@@ -51,8 +51,21 @@ def get_student(student_id : int = Path(description="The Id of the student", gt=
 @app.get("/get-by-name")
 
 def get_student(name : Optional[str] = None , test = int):
-    
+
     for student_id in students:
         if students[student_id]['name'] == name:
             return students[student_id]
     return {'Data' : 'Not found'}
+
+# Combining path and query parameters
+
+@app.get("/get-by-name/{student_id}")
+
+def get_student(student_id : int , name : Optional[str] = None , test = int):
+    if student_id == None:
+        for student_id in students:
+            if students[student_id]['name'] == name:
+                return students[student_id]
+        return {'Data' : 'Not found'}
+    else:
+        return students[student_id]
