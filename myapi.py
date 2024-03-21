@@ -19,6 +19,16 @@ students = {
         "name" : "brick",
         "age" : "11",
         "class" : "year 6"
+    },
+    4 : {
+        "name" : "jane",
+        "age" : "10",
+        "class" : "year 5"
+    },
+    5 : {
+        "name" : "gibi",
+        "age" : "9",
+        "class" : "year 4"
     }
 }
 
