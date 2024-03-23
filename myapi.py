@@ -1,6 +1,7 @@
 # Builnding our first API
 from fastapi import FastAPI, Path
 from typing import Optional
+from pydantic import BaseModel
 
 # We create an instance of the API object
 app = FastAPI()
@@ -32,6 +33,14 @@ students = {
         "class" : "year 4"
     }
 }
+
+# Creating a new class
+
+class Student(BaseModel):
+    name: str
+    age: int
+    year: str
+
 
 # We create and endopoint (URL)
 @app.get("/")
@@ -69,3 +78,14 @@ def get_student(student_id : int , name : Optional[str] = None , test = int):
         return {'Data' : 'Not found'}
     else:
         return students[student_id]
+
+# Request body and the post method
+# With the following command we can save the data of a new student
+@app.post("/create-student/{student-id}")
+def create_student(student_id : int , student : Student):
+    if student_id in students:
+        return {"Error": "the student already exist"}
+
+    students[student_id] = student
+    return students[student_id]
+
