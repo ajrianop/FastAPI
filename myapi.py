@@ -41,6 +41,10 @@ class Student(BaseModel):
     age: int
     year: str
 
+class UpdateStudent(BaseModel):
+    name: Optional[str] = None
+    age: Optional[int] = None
+    year: Optional[str] = None
 
 # We create and endopoint (URL)
 @app.get("/")
@@ -79,7 +83,7 @@ def get_student(student_id : int , name : Optional[str] = None , test = int):
     else:
         return students[student_id]
 
-# Request body and the post method
+# Request body and the post method (To save the data of a new student) 
 # With the following command we can save the data of a new student
 @app.post("/create-student/{student-id}")
 def create_student(student_id : int , student : Student):
@@ -89,3 +93,26 @@ def create_student(student_id : int , student : Student):
     students[student_id] = student
     return students[student_id]
 
+
+# Put method (To update some student that alerady exists)
+@app.put("/update-student/{student_id}")
+def update_student(student_id : int , student : UpdateStudent):
+    if student_id not in students:
+        return {"Error" : "Student does not exist"}
+    '''
+    students[student_id] = students[student_id].copy(update={k: v for k, v in source.dict().items() if v is not None})
+    
+    students[student_id] = student
+    '''
+    '''
+    '''
+    if student.name != None:
+        students[student_id]["name"] = student.name
+    
+    if student.age != None:
+        students[student_id]["age"] = student.age
+
+    if student.year != None:
+        students[student_id]["year"] = student.year
+    
+    return students[student_id]
